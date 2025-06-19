@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ionic/react": "^8.6.2",
     "aws-amplify": "^5.3.27",
+    "ionicons": "^8.0.9",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2"
