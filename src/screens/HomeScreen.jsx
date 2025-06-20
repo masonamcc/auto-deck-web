@@ -15,7 +15,7 @@ export default function HomeScreen() {
             setGreetingMessage('Good Afternoon,')
         } else if (thisHour >= 18 && thisHour < 21) {
             setGreetingMessage('Good Evening,')
-        } else if (thisHour >= 21 && thisHour <= 24 ) {
+        } else if (thisHour >= 21 && thisHour <= 24) {
             setGreetingMessage('Late Night?')
         }
     }
@@ -42,15 +42,23 @@ export default function HomeScreen() {
                         <div className={'hero-field'}>
                             <p style={{marginTop: '0'}}>Front-End Skills</p>
                             <div className={'icon-container'}>
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"/>
+
                                 <img
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg"/>
                                 <img
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"/>
                                 <img
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"/>
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bulma/bulma-plain.svg"/>
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"/>
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactrouter/reactrouter-original.svg"/>
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"/>
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original.svg"/>
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bulma/bulma-plain.svg"/>
                             </div>
                         </div>
 
@@ -64,10 +72,12 @@ export default function HomeScreen() {
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg"/>
 
 
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original-wordmark.svg" />
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original-wordmark.svg"/>
 
 
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg" />
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg"/>
 
                                 <img
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"/>
@@ -75,7 +85,13 @@ export default function HomeScreen() {
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"/>
 
 
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg" />
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg"/>
+
+
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-plain-wordmark.svg"/>
+
 
                             </div>
 
@@ -85,10 +101,12 @@ export default function HomeScreen() {
                             <p>IDE's</p>
                             <div className="icon-container">
 
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original-wordmark.svg" />
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original-wordmark.svg"/>
 
 
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg" />
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg"/>
 
                             </div>
                         </div>

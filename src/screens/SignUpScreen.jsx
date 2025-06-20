@@ -18,7 +18,6 @@ export default function SignUpScreen() {
     const navigate = useNavigate()
 
     const signUp = async (email, password) => {
-        console.log('SignUp has started...');
         try {
             const {user} = await Auth.signUp({
                 username: email, // ✅ email is used as username
@@ -26,11 +25,13 @@ export default function SignUpScreen() {
                 attributes: {email}
             });
             console.log('Sign-up successful:', user);
+            setErrorMessage('')
             navigate('/verification', {state: {email}});
         } catch (error) {
             setErrorMessage(error.message)
             console.log(errorMessage)
         }
+
     };
 
     return (
@@ -102,7 +103,25 @@ export default function SignUpScreen() {
                                 information.</p>
                         </div>
 
-                        <button className={'button-accent'}>Sign Up</button>
+                        {errorMessage ? (
+                            <div className="hero-field">
+                                <p className={'error-message'}>{errorMessage}</p>
+                            </div>
+                        ) : (
+                            <></>
+                        )}
+
+                        <button className={'button-accent'}
+                            onClick={() => {
+                                if (password !== confirmPassword) {
+                                    setErrorMessage('Passwords do not match')
+                                } else {
+                                    setErrorMessage('')
+                                    signUp(email, password)
+                                }
+                            }
+                        }
+                        >Sign Up</button>
                     </div>
 
                 </div>

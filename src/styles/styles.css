@@ -123,6 +123,11 @@
     background-color: #eed94e;
 }
 
+.button-dull {
+    background-color: #171717;
+    color: white
+}
+
 .input-dark {
     background: transparent;
     border: 0px;
@@ -144,6 +149,8 @@
     outline: none
 }
 
+
+
 .input-field {
     display: flex;
     align-items: center;
@@ -159,4 +166,10 @@
     right: 1rem;
     cursor: pointer
 }
+
+.error-message {
+    color: #ff5555
+}
+
+
 

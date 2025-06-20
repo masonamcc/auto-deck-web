@@ -19,8 +19,10 @@ export default function Navbar() {
                     <Link to="/">Home</Link>
                 </div>
 
-                <div>
-                    <button>Login</button>
+                <div style={{display: 'flex', gap: '2rem'}}>
+                    <button
+                    style={{backgroundColor: 'transparent', color: 'white', borderColor: 'white'}}
+                    >Login</button>
                     <button
                     onClick={() => navigate('/sign-up')}
                     >Sign Up</button>
