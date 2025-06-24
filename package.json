@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@apollo/client": "^3.13.8",
     "@ionic/react": "^8.6.2",
     "aws-amplify": "^5.3.27",
+    "graphql": "^16.11.0",
     "ionicons": "^8.0.9",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

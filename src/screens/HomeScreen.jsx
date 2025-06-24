@@ -11,7 +11,7 @@ export default function HomeScreen() {
             setGreetingMessage('Early Bird, Huh?')
         } else if (thisHour >= 6 && thisHour < 12) {
             setGreetingMessage('Good Morning')
-        } else if (thisHour >= 13 && thisHour < 18) {
+        } else if (thisHour >= 12 && thisHour < 18) {
             setGreetingMessage('Good Afternoon,')
         } else if (thisHour >= 18 && thisHour < 21) {
             setGreetingMessage('Good Evening,')
@@ -20,13 +20,14 @@ export default function HomeScreen() {
         }
     }
 
+
+
     useEffect(() => {
         greetUser()
     }, []);
 
     return (
-        <div className={'page'}>
-
+        <div className={'center-container'}>
             <div className={'hero-section'}>
 
                 <div className={'grid-2-col'}>
@@ -51,12 +52,10 @@ export default function HomeScreen() {
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"/>
                                 <img
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"/>
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactrouter/reactrouter-original.svg"/>
+
                                 <img
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"/>
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original.svg"/>
+
                                 <img
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bulma/bulma-plain.svg"/>
                             </div>
@@ -85,14 +84,6 @@ export default function HomeScreen() {
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"/>
 
 
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg"/>
-
-
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-plain-wordmark.svg"/>
-
-
                             </div>
 
                         </div>
@@ -115,11 +106,6 @@ export default function HomeScreen() {
                 </div>
 
             </div>
-            {/*<div className={'general-section'}>*/}
-            {/*    <h3>Introduction</h3>*/}
-            {/*    <p>I'm a remote full-stack software engineer from New Jersey, now traveling the country with my girlfriend.</p>*/}
-            {/*</div>*/}
-
         </div>
     )
 }

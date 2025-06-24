@@ -1,67 +1,98 @@
-import {useEffect, useState} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import {Auth} from "aws-amplify";
-import HomeScreen from "./screens/HomeScreen.jsx";
-import {Route, Routes} from "react-router-dom";
-import Navbar from "./navigation/Navbar.jsx";
-import SignUpScreen from "./screens/SignUpScreen.jsx";
-import VerificationScreen from "./screens/VerificationScreen.jsx";
-import SetupScreen from "./screens/SetupScreen.jsx";
-import {AwsUserContext} from "./Contexts/AwsUserContext.js";
-import AppHomeScreen from "./screens/AppHomeScreen.jsx";
+import {useEffect, useState} from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import {Auth} from 'aws-amplify';
+import HomeScreen from './screens/HomeScreen.jsx';
+import {Route, Routes, useNavigate} from 'react-router-dom';
+import Navbar from './navigation/Navbar.jsx';
+import SignUpScreen from './screens/SignUpScreen.jsx';
+import VerificationScreen from './screens/VerificationScreen.jsx';
+import SetupScreen from './screens/SetupScreen.jsx';
+import {AwsUserContext} from './contexts/AwsUserContext.js';
+import AppHomeScreen from './screens/AppHomeScreen.jsx';
+import SignInScreen from './screens/SignIn.jsx';
+import Sidebar from './navigation/Sidebar.jsx';
+import {useQuery, gql} from '@apollo/client';
+
+const GET_USERS = gql`
+    query {
+        users {
+            id
+            firstName
+            lastName
+            email
+        }
+    }
+`;
 
 function App() {
-
     const [awsUser, setAwsUser] = useState(false);
-    const [dbUser, setDbUser] = useState(null)
+    const [dbUser, setDbUser] = useState(null);
+    const [users, setUsers] = useState([])
+
+    const navigate = useNavigate();
+
+    // ✅ Run GraphQL query at component level
+    const {loading, error, data} = useQuery(GET_USERS);
+
+    // ✅ Log result when available
+    useEffect(() => {
+        if (data) {
+            console.log('GraphQL query result:', data);
+            setUsers(data)
+        }
+    }, [data]);
 
     useEffect(() => {
         Auth.currentAuthenticatedUser()
-            .then(user => {
-                console.log('Authenticated User')
-                const groups = user.signInUserSession.accessToken.payload['cognito:groups'] || [];
+            .then((user) => {
+                console.log('Authenticated User');
+                const groups =
+                    user.signInUserSession.accessToken.payload['cognito:groups'] || [];
                 console.log("User's Groups are: ", groups);
-                console.log("Setting User's Groups...");
-                // setUserGroup(groups); // <-- Store all groups
-                console.log("Setting AWS User...");
                 setAwsUser(user);
-
-                const userEmail = user.attributes.email;
-                console.log("Settings User's Email...");
-                // setUserEmail(userEmail);
-                console.log("Navigating to Dashboard");
-                // navigate('/dashboard');
+                navigate('/app/home');
             })
             .catch(() => {
                 console.log('❌ No authenticated user');
-                // navigate('/login');
                 setAwsUser(null);
             });
     }, []);
 
     return (
-        <AwsUserContext value={{ awsUser, setAwsUser}}>
-        <div style={{height: '100vh', width: '100vw', display: 'flex', backgroundColor: '#e5e5e5'}}>
-            <div className={'master-container gradient'}>
-                <Navbar/>
-                <Routes>
-                    <Route path={"/"} element={<HomeScreen/>}></Route>
-                </Routes>
+        <div className={'master-container'}>
+            <AwsUserContext.Provider value={{awsUser, setAwsUser}}>
+                <div className={`static-container ${awsUser ? 'app-background' : 'gradient'}`}>
+                    <Navbar/>
 
-                {/*Authentication*/}
-                <Routes>
-                    <Route path={"/app/home"} element={<AppHomeScreen/>}></Route>
-                    <Route path={"/sign-up"} element={<SignUpScreen/>}></Route>
-                    <Route path={"/sign-up/setup"} element={<SetupScreen/>}></Route>
-                    <Route path={"/verification"} element={<VerificationScreen/>}></Route>
-                </Routes>
-            </div>
+                    {awsUser &&
+                        <div className={'page-content'}>
+                            <Sidebar/>
+                            <div className={'mainframe'}>
+                                <Routes>
+                                    <Route path={'/app/home'} element={<AppHomeScreen/>}/>
+                                </Routes>
+                            </div>
+                        </div>
+                    }
+
+
+                    {!awsUser &&
+                        <div className={'page-content'}>
+                            <div className={'mainframe logged-out'}><Routes>
+                                <Route path={"/"} element={<HomeScreen/>}></Route>
+                                <Route path={"/sign-in"} element={<SignInScreen/>}></Route>
+                                <Route path={"/sign-up"} element={<SignUpScreen/>}></Route>
+                                <Route path={"/sign-up/setup"} element={<SetupScreen/>}></Route>
+                                <Route path={"/verification"} element={<VerificationScreen/>}></Route>
+                            </Routes></div>
+                        </div>
+                    }
+                </div>
+            </AwsUserContext.Provider>
         </div>
-        </AwsUserContext>
-
-    )
+    );
 }
 
-export default App
+export default App;

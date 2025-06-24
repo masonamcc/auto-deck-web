@@ -4,9 +4,12 @@ import {use, useState} from "react";
 import {IonIcon} from '@ionic/react';
 import {eyeOffOutline, eyeOutline, personOutline} from "ionicons/icons";
 // import '../ionicons/dist/css/ionicons.min.css';
+import { useAwsUser } from '../contexts/AwsUserContext.js';
 
 
-export default function SignUpScreen() {
+export default function SignInScreen() {
+
+    const { setAwsUser, awsUser } = useAwsUser();
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -17,22 +20,19 @@ export default function SignUpScreen() {
 
     const navigate = useNavigate()
 
-    const signUp = async (email, password) => {
+    const signIn = async (username, password) => {
         try {
-            const {user} = await Auth.signUp({
-                username: email, // ✅ email is used as username
-                password,
-                attributes: {email}
-            });
-            console.log('Sign-up successful:', user);
-            setErrorMessage('')
-            navigate('/verification', {state: {email}});
+            console.log('Getting Auth User')
+            const authUser = await Auth.signIn(username, password);
+            console.log('Signed in:', authUser);
+            setAwsUser(authUser)
+            console.log(awsUser)
+            navigate('/app/home')
         } catch (error) {
-            setErrorMessage(error.message)
-            console.log(errorMessage)
+            console.error('Sign in error:', error);
         }
-
     };
+
 
     return (
         <div className={'center-container'}>
@@ -42,10 +42,9 @@ export default function SignUpScreen() {
                 <div className={'grid-2-col'}>
 
                     <div className={'general-field'}>
-                        <h1 style={{fontSize: '40px', lineHeight: '1', fontWeight: '400'}}>Sign Up</h1>
+                        <h1 style={{fontSize: '40px', lineHeight: '1', fontWeight: '400'}}>Sign In</h1>
 
-                        <p style={{fontSize: '25px', fontWeight: '200'}}>Test out the authentication process and user
-                            profile architecture.</p>
+                        <p style={{fontSize: '25px', fontWeight: '200'}}>Sign in to gain access to the app.</p>
 
                     </div>
 
@@ -77,32 +76,6 @@ export default function SignUpScreen() {
                             </div>
                         </div>
 
-                        <div className={'hero-field'}>
-                            <p>Confirm Password</p>
-                            <div className={'input-field'}>
-                                <input className={'input-dark'}
-                                       type={showPassword ? 'text' : 'password'}
-                                       placeholder={'********'}
-                                       value={confirmPassword}
-                                       onChange={(e) => setConfirmPassword(e.target.value)}
-                                />
-                                <IonIcon icon={showPassword ? eyeOutline : eyeOffOutline}
-                                         onClick={() => setShowPassword(prev => !prev)}
-                                />
-                            </div>
-                        </div>
-
-                        <div className="hero-field">
-                            <p style={{
-                                fontSize: '14px',
-                                width: '75%',
-                                color: 'rgba(255,255,255,.2)',
-                                fontWeight: '300',
-                                fontStyle: 'italic'
-                            }}>* I respect your privacy and will never share or sell your email or personal
-                                information.</p>
-                        </div>
-
                         {errorMessage ? (
                             <div className="hero-field">
                                 <p className={'error-message'}>{errorMessage}</p>
@@ -112,16 +85,8 @@ export default function SignUpScreen() {
                         )}
 
                         <button className={'button-accent'}
-                            onClick={() => {
-                                if (password !== confirmPassword) {
-                                    setErrorMessage('Passwords do not match')
-                                } else {
-                                    setErrorMessage('')
-                                    signUp(email, password)
-                                }
-                            }
-                        }
-                        >Sign Up</button>
+                                onClick={() => signIn(email, password)}
+                        >Sign In</button>
                     </div>
 
                 </div>
