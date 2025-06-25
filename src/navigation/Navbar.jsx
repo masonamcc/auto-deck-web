@@ -29,7 +29,7 @@ export default function Navbar() {
     }, [awsUser]);
 
     return (
-        <div className={'navbar'}>
+        <div className={'navbar dark-mode'}>
 
             <div className={'nav-row-container is-gap-1'}>
                 <p style={{fontWeight: '700'}}>Multi-Tool</p>

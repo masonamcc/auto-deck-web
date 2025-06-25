@@ -21,10 +21,9 @@ export default function Sidebar() {
     }, [awsUser]);
 
     return (
-        <div className={'sidebar'}>
+        <div className={'sidebar dark-mode'}>
             <div>
                 <div className="menu-header">
-                    <IonIcon icon={home}/>
                     <h5>Menu</h5>
                 </div>
                 <div className={'menu-container'}>

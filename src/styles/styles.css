@@ -20,7 +20,9 @@
     /*width: 100%;*/
     /*flex: 1;*/
     color: white;
-    padding-inline: 2rem
+    padding-inline: 2rem;
+    border-bottom: 2px solid;
+    border-color: rgba(255,255,255,.1);
 }
 
 .static-container {
@@ -53,7 +55,7 @@
 
 .mainframe {
     /*background-color: #f1f1f1;*/
-    width: 85%;
+    width: 90%;
     height: auto;
     display: flex;
 }
@@ -95,8 +97,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
+    height: 100%;
     gap: 10rem;
     /*height: 70%*/
+}
+
+.padding-1 {
+    padding: 1rem
+}
+
+.padding-4 {
+    padding: 4rem
 }
 
 .nav-row-container {
@@ -274,6 +285,7 @@
 
 .light {
     background-color: #e5e5e5;
+    color: black
 }
 
 .white {
@@ -306,9 +318,13 @@
     grid-template-columns: 1fr 1fr;
 }
 
+.has-3-col {
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .cell {
-    background: white;
-    border-radius: .5rem;
+    background: rgba(255,255,255,.05);
+    border-radius: 0;
     padding: 2rem;
     width: 100%;
 }
@@ -317,7 +333,14 @@
     box-shadow: 0 .1rem .5rem rgba(0,0,0,.1);
 }
 
-/*Sections*/
+
+
+.img {
+    width:25%;
+    height: auto; /* or a fixed height if you want it to fill the vertical space */
+    object-fit: cover;
+    display: block; /* optional: removes small whitespace under image */
+}
 
 
 /*Colors*/
@@ -339,4 +362,9 @@
     display: flex;
     flex-direction: row;
     gap: .5rem
+}
+
+.dark-mode {
+    background: #1c1c1c;
+    color: white
 }
