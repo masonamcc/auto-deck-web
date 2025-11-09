@@ -1,4 +1,4 @@
-const ep = 'http://192.168.1.119:8080'
+const ep = '10.0.0.38:8080'
 
 export const addDbUser = async(email, firstName, lastName) => {
     const user = await fetch (`${ep}/users/create`, {
@@ -17,4 +17,17 @@ export const addDbUser = async(email, firstName, lastName) => {
         console.log('Response: ', response)
         return response
     }
+}
+
+export const fetchDbUsers = async() => {
+    try {
+        const users = await fetch (`http://10.0.0.38:8080/users`)
+        const response = await users.json()
+        if (response) {
+            return response
+        }
+    } catch (err) {
+        console.log("Couldn't fetch Db Users: ", err)
+    }
+
 }

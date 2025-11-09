@@ -14,17 +14,19 @@ import AppHomeScreen from './screens/AppHomeScreen.jsx';
 import SignInScreen from './screens/SignIn.jsx';
 import Sidebar from './navigation/Sidebar.jsx';
 import {useQuery, gql} from '@apollo/client';
+import ManageOrgsScreen from "./screens/ManageOrgsScreen.jsx";
 
-const GET_USERS = gql`
-    query {
-        users {
-            id
-            firstName
-            lastName
-            email
-        }
-    }
-`;
+
+// const GET_USERS = gql`
+//     query {
+//         users {
+//             id
+//             firstName
+//             lastName
+//             email
+//         }
+//     }
+// `;
 
 function App() {
     const [awsUser, setAwsUser] = useState(false);
@@ -34,15 +36,17 @@ function App() {
     const navigate = useNavigate();
 
     // ✅ Run GraphQL query at component level
-    const {loading, error, data} = useQuery(GET_USERS);
+    // const {loading, error, data} = useQuery(GET_USERS);
+
+
 
     // ✅ Log result when available
-    useEffect(() => {
-        if (data) {
-            console.log('GraphQL query result:', data);
-            setUsers(data)
-        }
-    }, [data]);
+    // useEffect(() => {
+    //     if (data) {
+    //         console.log('GraphQL query result:', data);
+    //         setUsers(data)
+    //     }
+    // }, [data]);
 
     useEffect(() => {
         Auth.currentAuthenticatedUser()
@@ -60,6 +64,8 @@ function App() {
             });
     }, []);
 
+
+
     return (
         <div className={'master-container'}>
             <AwsUserContext.Provider value={{awsUser, setAwsUser}}>
@@ -72,11 +78,11 @@ function App() {
                             <div className={'mainframe'}>
                                 <Routes>
                                     <Route path={'/app/home'} element={<AppHomeScreen/>}/>
+                                    <Route path={'/app/manage/organizations'} element={<ManageOrgsScreen/>}/>
                                 </Routes>
                             </div>
                         </div>
                     }
-
 
                     {!awsUser &&
                         <div className={'page-content'}>

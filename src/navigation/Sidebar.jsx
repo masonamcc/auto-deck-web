@@ -21,25 +21,12 @@ export default function Sidebar() {
     }, [awsUser]);
 
     return (
-        <div className={'sidebar dark-mode'}>
+        <div className={'sidebar'}>
             <div>
-                <div className="menu-header">
-                    <h5>Menu</h5>
-                </div>
                 <div className={'menu-container'}>
                     <Link to={'/app/home'}>Dashboard</Link>
-                </div>
-                <div className="menu-header">
-
-                </div>
-                <div className={'menu-container'}>
                     <Link to={'/resources'}>Account Settings</Link>
                     <Link to={'/resources'}>General Settings</Link>
-                </div>
-            </div>
-            <div>
-                <div className="menu-header">
-                    <h5>Sign Out</h5>
                 </div>
             </div>
 

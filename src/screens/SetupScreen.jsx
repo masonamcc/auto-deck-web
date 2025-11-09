@@ -9,7 +9,7 @@ import {addDbUser} from "../scripts/userScripts.js";
 
 export default function SetupScreen({setAwsUser}) {
 
-    const location = useLocation();;
+    const location = useLocation();
 
     const {username, user} = location.state;
     const email = username
@@ -38,9 +38,7 @@ export default function SetupScreen({setAwsUser}) {
 
                     <div className={'general-field'}>
                         <h1 style={{fontSize: '40px', lineHeight: '1', fontWeight: '400'}}>Thank you for signing up!</h1>
-
                         <p style={{fontSize: '25px', fontWeight: '200'}}>You can either skip ahead to the main app or you can fill in these additional fields so I can personalize the experience for you.</p>
-
                     </div>
 
                     <div>
