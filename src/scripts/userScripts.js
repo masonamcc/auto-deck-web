@@ -1,7 +1,10 @@
-const ep = '10.0.0.38:8080'
+import netConfig from "../networkConfig.json"
+
+const endPoint = netConfig.endPoint
+console.log('Endpoint is: ', endPoint)
 
 export const addDbUser = async(email, firstName, lastName) => {
-    const user = await fetch (`${ep}/users/create`, {
+    const user = await fetch (`${endPoint}/users/create`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -21,7 +24,7 @@ export const addDbUser = async(email, firstName, lastName) => {
 
 export const fetchDbUsers = async() => {
     try {
-        const users = await fetch (`http://10.0.0.38:8080/users`)
+        const users = await fetch (`${endPoint}/users`)
         const response = await users.json()
         if (response) {
             return response

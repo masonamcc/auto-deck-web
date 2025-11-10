@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import '../styles/gradients.css'
 
 export default function HomeScreen() {
 
@@ -20,26 +21,25 @@ export default function HomeScreen() {
         }
     }
 
-
-
     useEffect(() => {
         greetUser()
     }, []);
 
     return (
-        <div className={'center-container'}>
+        <div className={'center-container gradient-1'}>
             <div className={'hero-section'}>
 
                 <div className={'grid-2-col'}>
 
                     <div className={'general-field'}>
-                        <h1 style={{fontSize: '40px', lineHeight: '1', fontWeight: '400'}}>{greetingMessage}</h1>
+                        <h1 style={{fontSize: '40px', lineHeight: '1', fontWeight: '400'}}>AutoDeck</h1>
 
-                        <p style={{fontSize: '25px', fontWeight: '200'}}>I'm a remote, full-stack software engineer.</p>
-                        <button className={'button-accent'}>Projects</button>
+                        <p style={{fontSize: '25px', fontWeight: '300'}}>Automate your work through Chrome Extensions</p>
+
+                        <button className={'button-accent'}>Sign Up</button>
                     </div>
 
-                    <div>
+                    <div style={{display: 'none'}}>
                         <div className={'hero-field'}>
                             <p style={{marginTop: '0'}}>Front-End Skills</p>
                             <div className={'icon-container'}>
@@ -103,6 +103,10 @@ export default function HomeScreen() {
                         </div>
                     </div>
 
+                </div>
+
+                <div className={'grid has-3-col'}>
+                    <p>Automate your workflows </p>
                 </div>
 
             </div>

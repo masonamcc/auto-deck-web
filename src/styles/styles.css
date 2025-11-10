@@ -59,7 +59,8 @@
 
 .logged-out {
     width: 100%;
-    background: linear-gradient(45deg, #121212, #252525);
+    background: white;
+    /*color: black*/
     /*overflow-y: none;*/
     /*padding: 2rem*/
 }
@@ -99,8 +100,12 @@
     /*height: 70%*/
 }
 
-.padding-1 {
+.p-1 {
     padding: 1rem
+}
+
+.py-1 {
+    padding-block: 1rem;
 }
 
 .padding-4 {
@@ -153,7 +158,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    color: #ffffff;
+    /*color: #ffffff;*/
     flex-direction: column;
     /*background: linear-gradient(to bottom, #0e0e0e, #1f1f1f);*/
     /*height: 700px*/
@@ -319,10 +324,14 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
+.is-col-span-3 {
+    grid-column: span 3;
+}
+
 .cell {
     background: rgba(255,255,255,.05);
     border-radius: 0;
-    padding: 2rem;
+    /*padding: 2rem;*/
     width: 100%;
 }
 

@@ -1,13 +1,64 @@
 import React from "react";
+import "../styles/elements.css"
+import {navigate} from "ionicons/icons";
+import {Link} from "react-router-dom";
 
 export default function ManageOrgsScreen() {
+
+    const storedOrgs = JSON.parse(localStorage.getItem('orgs')) || [];
+
     return (
         <div className={'mainframe-grid'}>
             <div className="mainframe-section scroll column">
 
                 <div className="grid has-3-col">
-                    <h4>Manage Organizations</h4>
+                    <div className={"cell is-col-span-3"}>
+                        <h4>Manage Organizations</h4>
+                    </div>
+
+
+                    <div className={"cell is-col-span-3"}>
+                        <table className={'table'}>
+                            <thead>
+                            <tr>
+                                <th style={{width: "5%"}}>
+                                    Org Id
+                                </th>
+                                <th style={{width: "20%"}}>
+                                    Org Name
+                                </th>
+                                <th>
+                                    Domain
+                                </th>
+                                <th style={{width: "10%"}}>
+                                    Actions
+                                </th>
+
+                            </tr>
+
+                            </thead>
+                            <tbody>
+                            {storedOrgs.map((org, index) => (
+                                <tr key={index}>
+                                    <td><input type={"checkbox"}/>{org.orgId}</td>
+                                    <td>{org.orgName}</td>
+                                    <td>{org.domain}</td>
+                                    <td>
+                                        <Link
+                                        to="/app/manage/organizations/edit"
+                                        state={{ org }}
+                                    >
+                                        Edit
+                                    </Link></td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
+
+
             </div>
         </div>
     )

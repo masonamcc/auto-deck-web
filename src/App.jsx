@@ -15,6 +15,7 @@ import SignInScreen from './screens/SignIn.jsx';
 import Sidebar from './navigation/Sidebar.jsx';
 import {useQuery, gql} from '@apollo/client';
 import ManageOrgsScreen from "./screens/ManageOrgsScreen.jsx";
+import EditOrgScreen from "./screens/EditOrgScreen.jsx";
 
 
 // const GET_USERS = gql`
@@ -79,6 +80,7 @@ function App() {
                                 <Routes>
                                     <Route path={'/app/home'} element={<AppHomeScreen/>}/>
                                     <Route path={'/app/manage/organizations'} element={<ManageOrgsScreen/>}/>
+                                    <Route path={'/app/manage/organizations/edit'} element={<EditOrgScreen/>}/>
                                 </Routes>
                             </div>
                         </div>

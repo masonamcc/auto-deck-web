@@ -1,0 +1,25 @@
+.table {
+    width: 100%;
+    background: #ffffff;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 1rem; /* apply to table instead of thead */
+}
+
+.table > thead {
+    background: #0098db;
+    color: white;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.table > thead > tr > th {
+    padding-inline: .5rem;
+    padding: .5rem;
+    text-align: left;
+}
+
+.table > tbody > tr > td {
+    padding: .5rem;
+    border-bottom: 1px;
+}
