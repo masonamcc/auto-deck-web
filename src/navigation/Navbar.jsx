@@ -3,24 +3,32 @@ import '../styles/styles.css'
 import {useAwsUser} from "../contexts/AwsUserContext.js";
 import {useEffect, useState} from "react";
 import {Auth} from "aws-amplify";
+import brand from '../brand.config.json'
+import {useView} from "../contexts/ViewContext.js";
+import {useAuthUser} from "../contexts/AuthUserContext.js";
+
 
 export default function Navbar() {
 
     const navigate = useNavigate()
     const {awsUser, setAwsUser} = useAwsUser()
-    const {users, setUsers} = useState({})
+    const {authUser, setAuthUser} = useAuthUser()
+    const {view, setView} = useView()
 
     const signOut = async() => {
         console.log('Singing Out')
-        try {
-            await Auth.signOut();
-            console.log('✅ Signed out successfully');
-            setAwsUser(null)
-            navigate("/")
-            // Optionally redirect the user or clear app state
-        } catch (error) {
-            console.error('❌ Error signing out: ', error);
-        }
+        setAuthUser(null)
+        navigate("/")
+        setView('welcome')
+        // try {
+        //     await Auth.signOut();
+        //     console.log('✅ Signed out successfully');
+        //     setAwsUser(null)
+        //     navigate("/")
+        //     // Optionally redirect the user or clear app state
+        // } catch (error) {
+        //     console.error('❌ Error signing out: ', error);
+        // }
     }
 
 
@@ -39,9 +47,9 @@ export default function Navbar() {
         <div className={'navbar'}>
 
             <div className={'nav-row-container is-gap-1'}>
-                <p style={{fontWeight: '700'}}>AutoDeck</p>
-                <p>|</p>
-                <p style={{fontWeight: '300'}}>Management Console</p>
+                <p onClick={() => setView('welcome')} style={{fontWeight: '700'}}>{brand.name}</p>
+
+
             </div>
 
             <div className={'nav-row-container is-gap-2'}>
@@ -49,10 +57,10 @@ export default function Navbar() {
                 {/*    <Link to="/">Home</Link>*/}
                 {/*</div>*/}
 
-                {awsUser ? (
+                {authUser ? (
                     <div style={{display: 'flex', gap: '2rem'}}>
                         <button
-                            style={{backgroundColor: 'transparent', color: 'white', borderColor: 'white'}}
+                            className={'button'}
                             onClick={signOut}
                         >Sign Out
                         </button>
@@ -64,13 +72,14 @@ export default function Navbar() {
                 ) : (
                     <div style={{display: 'flex', gap: '2rem'}}>
                         <button
-                            style={{backgroundColor: 'transparent', color: 'white', borderColor: 'white'}}
-                            onClick={() => navigate('/sign-in')}
+                            className={'button'}
+                            onClick={() => setView('sign-in')}
                         >Sign In
                         </button>
                         <button
-                            onClick={() => navigate('/sign-up')}
-                        >Sign Up
+                            className={'button-accent'}
+                            onClick={() => setView('sign-up')}
+                        >Get Started
                         </button>
                     </div>
                 )}

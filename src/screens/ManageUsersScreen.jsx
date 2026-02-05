@@ -3,10 +3,9 @@ import "../styles/elements.css"
 import {navigate} from "ionicons/icons";
 import {Link} from "react-router-dom";
 
-export default function ManageOrgsScreen() {
+export default function ManageUsersScreen() {
 
-    const storedOrgs = JSON.parse(localStorage.getItem('orgs')) || [];
-
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
 
     return (
         <div className={'mainFrame-grid'}>
@@ -14,21 +13,25 @@ export default function ManageOrgsScreen() {
 
                 <div className="grid has-3-col">
                     <div className={"cell is-col-span-3"}>
-                        <h4>Manage Organizations</h4>
+                        <h4>Manage Users</h4>
                     </div>
+
 
                     <div className={"cell is-col-span-3"}>
                         <table className={'table'}>
                             <thead>
                             <tr>
                                 <th style={{width: "5%"}}>
-                                    Org Id
+                                    User Id
                                 </th>
                                 <th style={{width: "20%"}}>
-                                    Org Name
+                                    First Name
                                 </th>
                                 <th>
                                     Domain
+                                </th>
+                                <th>
+                                    OrganizationId
                                 </th>
                                 <th style={{width: "10%"}}>
                                     Actions
@@ -38,15 +41,16 @@ export default function ManageOrgsScreen() {
 
                             </thead>
                             <tbody>
-                            {storedOrgs.map((org, index) => (
+                            {storedUsers.map((user, index) => (
                                 <tr key={index}>
-                                    <td><input type={"checkbox"}/>{org.id}</td>
-                                    <td>{org.organizationName}</td>
-                                    <td>{org.organizationDomain}</td>
+                                    <td><input type={"checkbox"}/>{user.orgId}</td>
+                                    <td>{user.firstName}</td>
+                                    <td>{user.lastName}</td>
+                                    <td>{user.orgId}</td>
                                     <td>
                                         <Link
                                         to="/app/manage/organizations/edit"
-                                        state={{ org }}
+                                        state={{ user }}
                                     >
                                         Edit
                                     </Link></td>

@@ -8,6 +8,7 @@ export const fetchDbOrgs = async() => {
         const orgs = await fetch (`${endPoint}/organizations`)
         const response = await orgs.json()
         if (response) {
+            console.log('Response: ', response)
             return response
         }
     } catch (err) {

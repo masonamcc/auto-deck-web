@@ -1,5 +1,8 @@
+
+
 * {
     box-sizing: border-box;
+    font-family: Inter, Montserrat, Roboto, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .master-container {
@@ -50,11 +53,52 @@
     flex-direction: row;
 }
 
-.mainframe {
-    /*background-color: #f1f1f1;*/
+.mainFrame {
+    background-color: #182434;
     width: 90%;
     height: auto;
     display: flex;
+}
+
+/*Text Classes*/
+
+.text-center {
+    text-align: center;
+}
+
+.text-white {
+    color: white;
+}
+
+.height-100vh {
+    height: 100vh;
+}
+
+.height-300 {
+    height: 300px;
+}
+
+/*Sizing Classes*/
+
+.width-50 {
+    width: 50%;
+}
+
+/*Margin Classes*/
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+.section {
+    /*width: 100%;*/
+}
+
+/*Align Classes*/
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logged-out {
@@ -65,12 +109,11 @@
     /*padding: 2rem*/
 }
 
-.mainframe-grid {
+.section-container {
     width: 100%;
-    height: 100%;
-    background-color: white;
-    display: grid;
-    grid-template-columns: 1fr;
+    /*height: 100%;*/
+    background-color: transparent;
+    display: flex
     /*gap: 1rem*/
     /*overflow-y: scroll;*/
 }
@@ -79,7 +122,7 @@
     overflow-y: scroll;
 }
 
-.mainframe-section {
+.mainFrame-section {
     /*background-color: #4d7a9c;*/
     /*flex: 1;*/
     width: 100%;
@@ -91,18 +134,37 @@
     /*width: 50%*/
 }
 
+/*Grids ---------- */
+
 .grid-2-col {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    height: 100%;
-    gap: 10rem;
-    /*height: 70%*/
+    grid-template-columns: repeat(2, 1fr);
 }
 
+.span-2-col {
+    grid-column: span 2
+}
+
+.span-3-col {
+    grid-column: span 3;
+}
+/* ---------- */
+
+/*Gap Classes*/
+
+.gap-1 {
+    gap: 1rem;
+}
+
+/*Padding Classes*/
 .p-1 {
     padding: 1rem
 }
+
+.p-2 {
+    padding: 2rem
+}
+
 
 .py-1 {
     padding-block: 1rem;
@@ -118,8 +180,11 @@
     align-items: center;
 }
 
+/*Flex Classes*/
 
-
+.flex {
+    display: flex;
+}
 
 
 .app-background {
@@ -136,7 +201,7 @@
 
 
 
-.is-gap-1 {
+.gap-1 {
     gap: 1rem
 }
 
@@ -148,7 +213,10 @@
     color: #555
 }
 
-
+/*Margins*/
+.mb-1 {
+    margin-bottom: 1rem;
+}
 
 .hero-section {
     /*padding-inline: 4rem;*/
@@ -165,7 +233,7 @@
     /*background-color: #cf9e9e*/
 }
 
-.general-field > * {
+.field {
     margin-bottom: 1rem;
     margin-top: 0
 }
@@ -209,7 +277,8 @@
 }
 
 .button-accent {
-    background-color: #eed94e;
+    background-color: #1338ea;
+    color: white;
 }
 
 .button-dull {
@@ -219,14 +288,22 @@
 
 .input-dark {
     background: transparent;
-    border: 0px;
+    /*border: 0px;*/
     /*border-bottom: 1px solid;*/
     /*border-color: rgba(255,255,255,.2);*/
     /*padding-bottom: 1rem;*/
     width: 100%;
-    color: white;
+    /*color: white;*/
     font-size: 18px;
 
+}
+
+.input {
+    border-radius: .25rem;
+    border: 1px solid;
+    border-color: rgba(0,0,0,.2);
+    padding: .5rem;
+    width: 100%;
 }
 
 .input-dark::placeholder {
@@ -248,6 +325,7 @@
     border-bottom: 1px solid;
     border-color: rgba(255,255,255,.3);
     padding-right: 3rem;
+
 }
 
 .input-field > :nth-child(2) {
@@ -373,4 +451,27 @@
 .dark-mode {
     background: #1c1c1c;
     color: white
+}
+
+.text-small {
+    font-size: .8rem;
+}
+
+.faint-text,
+.faint-text h1,
+.faint-text h2,
+.faint-text h3,
+.faint-text h4,
+.faint-text h5,
+.faint-text h6,
+.faint-text p {
+    opacity: .2;
+}
+
+.panel {
+    box-shadow: 0 0 1rem rgba(0,0,0,.1);
+    border-radius: .5rem;
+    background: rgba(0,0,0,.25);
+    border: 1px solid rgba(255,255,255,.25);
+    color: white;
 }

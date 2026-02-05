@@ -8,27 +8,47 @@ import {IonIcon} from "@ionic/react";
 import '@ionic/react/css/core.css';
 
 import {home} from "ionicons/icons";
+import {useAuthUser} from "../contexts/AuthUserContext.js";
 
 export default function Sidebar() {
 
     const navigate = useNavigate()
     const {awsUser, setAwsUser} = useAwsUser()
+    const {authUser, setAuthUser} = useAuthUser()
 
-    useEffect(() => {
-        if (awsUser === false) {
-            navigate("/")
-        }
-    }, [awsUser]);
+    console.log('Auth User: ', authUser)
+
+    // useEffect(() => {
+    //     if (awsUser === false) {
+    //         navigate("/")
+    //     }
+    // }, [awsUser]);
 
     return (
         <div className={'sidebar'}>
-            <div>
-                <div className={'menu-container'}>
-                    <Link to={'/app/home'}>Dashboard</Link>
-                    <Link to={'/resources'}>Account Settings</Link>
-                    <Link to={'/resources'}>General Settings</Link>
+            {authUser.userGroup === 'admin' &&
+                <div>
+                    <div className={'menu-container'}>
+                        <Link to={'/dashboard'}>Dashboard</Link>
+                        <Link to={'/resources'}>Account Settings</Link>
+                        <Link to={'/resources'}>General Settings</Link>
+                    </div>
                 </div>
-            </div>
+            }
+
+            {authUser.userGroup !== 'admin' &&
+
+                <div>
+                    <div className={'menu-container'}>
+                        <Link to={'/dashboard'}>Dashboard</Link>
+                        <Link to={'/resources'}>Account Settings</Link>
+                        <Link to={'/resources'}>General Settings</Link>
+                    </div>
+                </div>
+            }
+
+
+
 
         </div>
     )
