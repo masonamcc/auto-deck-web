@@ -30,7 +30,7 @@ export default function EditOrgScreen() {
 
                 <div className="grid has-3-col">
                     <div className={'cell is-col-span-3'}>
-                        <p>Organization:</p>
+                        <p>Workspace:</p>
                         <h4>{org.organizationName}</h4>
                         <p>{org.organizationAddress}</p>
                     </div>

@@ -1,8 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+.inter-100 {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.inter-200 {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.inter-300 {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.inter-400 {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.inter-500 {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.inter-600 {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.inter-700 {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.inter-800 {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.inter-900 {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+}
 
 * {
     box-sizing: border-box;
-    font-family: Inter, Montserrat, Roboto, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .master-container {
@@ -18,11 +80,12 @@
     justify-content: space-between;
     margin: 0;
     align-items: center;
-    min-height: 50px;
-    color: black;
-    padding-inline: 2rem;
-    border-bottom: 1px solid;
-    border-color: rgba(0,0,0,.4);
+    min-height: 75px;
+    /*padding-inline: 2rem;*/
+
+    color: white;
+    /*border-color: rgba(0,0,0,.4);*/
+
 }
 
 .static-container {
@@ -44,18 +107,19 @@
 }
 
 .page-content {
-    /*background-color: orange;*/
+    background-color: white;
     /*flex: 1;*/
     width: 100%;
     height: 100%;
     /*height: 100%;*/
     display: flex;
     flex-direction: row;
+    /*color: white;*/
 }
 
 .mainFrame {
-    background-color: #182434;
-    width: 90%;
+    background-color: #ffffff;
+    flex: 1;
     height: auto;
     display: flex;
 }
@@ -74,6 +138,10 @@
     height: 100vh;
 }
 
+.height-full {
+    height: 100%
+}
+
 .height-300 {
     height: 300px;
 }
@@ -84,11 +152,41 @@
     width: 50%;
 }
 
+.width-75 {
+    width: 75%;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
 /*Margin Classes*/
+
+.mb-half {
+    margin-bottom: .5rem;
+}
+
+.mb-half-children > *:not(:last-child) {
+    margin-bottom: .5rem;
+}
 
 .mb-1 {
     margin-bottom: 1rem;
 }
+
+.mb-1-children > *:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+
+.mb-2-children > *:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
 .section {
     /*width: 100%;*/
 }
@@ -136,9 +234,27 @@
 
 /*Grids ---------- */
 
+.grid {
+    display: grid;
+    width: 100%;
+    gap: 1rem;
+    padding-bottom: 0;
+    margin: 0;
+}
+
 .grid-2-col {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4-col {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .span-2-col {
@@ -165,6 +281,9 @@
     padding: 2rem
 }
 
+.pl-2 {
+    padding-left: 2rem;
+}
 
 .py-1 {
     padding-block: 1rem;
@@ -186,6 +305,10 @@
     display: flex;
 }
 
+.align-center {
+    align-items: center;
+}
+
 
 .app-background {
     /*background: #e8bcbc;*/
@@ -199,7 +322,9 @@
     /*color: black*/
 }
 
-
+.gap-half {
+    gap: .5rem
+}
 
 .gap-1 {
     gap: 1rem
@@ -213,10 +338,7 @@
     color: #555
 }
 
-/*Margins*/
-.mb-1 {
-    margin-bottom: 1rem;
-}
+
 
 .hero-section {
     /*padding-inline: 4rem;*/
@@ -234,8 +356,13 @@
 }
 
 .field {
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     margin-top: 0
+}
+
+.field > * {
+    margin-bottom: .25rem;
+
 }
 
 .hero-field {
@@ -377,18 +504,7 @@
     justify-content: center;
 }
 
-/*Grids*/
 
-.grid {
-    display: grid;
-    /*height: 500px;*/
-    width: 100%;
-    /*grid-template-columns: 1fr;*/
-    gap: 1rem;
-    padding: 1rem;
-    padding-bottom: 0;
-    margin: 0;
-}
 
 .has-1-col {
     grid-template-columns: 1fr;
@@ -457,14 +573,11 @@
     font-size: .8rem;
 }
 
-.faint-text,
-.faint-text h1,
-.faint-text h2,
-.faint-text h3,
-.faint-text h4,
-.faint-text h5,
-.faint-text h6,
-.faint-text p {
+.text-size-2 {
+    font-size: 4rem;
+}
+
+.faint-text {
     opacity: .2;
 }
 
@@ -472,6 +585,13 @@
     box-shadow: 0 0 1rem rgba(0,0,0,.1);
     border-radius: .5rem;
     background: rgba(0,0,0,.25);
-    border: 1px solid rgba(255,255,255,.25);
+    /*border: 2px solid rgba(255,255,255,.1);*/
     color: white;
+}
+
+.clear {
+    background: transparent;
+    color: white;
+    border: 0;
+    border-bottom: 1px solid white;
 }

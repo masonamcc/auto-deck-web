@@ -10,6 +10,24 @@ import {useAuthUser} from "../contexts/AuthUserContext.js";
 
 export default function Navbar() {
 
+    const [greetingMessage, setGreetingMessage] = useState('')
+
+    const greetUser = () => {
+        const now = new Date();
+        const thisHour = now.getHours()
+        if (thisHour < 6) {
+            setGreetingMessage('Early Bird, Huh?')
+        } else if (thisHour >= 6 && thisHour < 12) {
+            setGreetingMessage('Good Morning')
+        } else if (thisHour >= 12 && thisHour < 18) {
+            setGreetingMessage('Good Afternoon,')
+        } else if (thisHour >= 18 && thisHour < 21) {
+            setGreetingMessage('Good Evening,')
+        } else if (thisHour >= 21 && thisHour <= 24) {
+            setGreetingMessage('Good Night,')
+        }
+    }
+
     const navigate = useNavigate()
     const {awsUser, setAwsUser} = useAwsUser()
     const {authUser, setAuthUser} = useAuthUser()
@@ -20,21 +38,12 @@ export default function Navbar() {
         setAuthUser(null)
         navigate("/")
         setView('welcome')
-        // try {
-        //     await Auth.signOut();
-        //     console.log('✅ Signed out successfully');
-        //     setAwsUser(null)
-        //     navigate("/")
-        //     // Optionally redirect the user or clear app state
-        // } catch (error) {
-        //     console.error('❌ Error signing out: ', error);
-        // }
     }
 
 
 
     useEffect(() => {
-
+        greetUser()
     }, []);
 
     useEffect(() => {
@@ -44,48 +53,52 @@ export default function Navbar() {
     }, [awsUser]);
 
     return (
-        <div className={'navbar'}>
+        <div className={'navbar gunmetal'} style={{justifyContent: 'center', alignContent: 'center', display: 'flex'}}>
 
-            <div className={'nav-row-container is-gap-1'}>
-                <p onClick={() => setView('welcome')} style={{fontWeight: '700'}}>{brand.name}</p>
+            {authUser ? (
+                <div className={'fullwidth grid-2-col'} style={{alignItems: 'center', display: 'flex'}} >
+                    <div style={{width: '50%', alignContent: 'center',display: 'flex'}}>
+                        <div className={'flex gap-half'} style={{width: '24%', paddingLeft: '2rem'}}>
+                            <h4 onClick={() => setView('welcome')} style={{alignContent: 'center', fontWeight: '700', margin: 0}}>{brand.name}</h4>
+                        </div>
+                        <div className={'pl-2'}>
+                            <p className={'inter-200'}>{greetingMessage}</p>
+                            <p className={'inter-600'}>{authUser.firstName} {authUser.lastName}</p>
+                        </div>
+                    </div>
+                    <div style={{width: '50%', textAlign: 'right'}}>
 
+                        <div style={{textAlign: 'right', width: 'auto', paddingRight: '2rem' }} onClick={() => signOut()}>
+                            <p>{authUser.firstName} {authUser.lastName}</p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            ) : (
+                <></>
+            )}
+            <div>
 
             </div>
 
-            <div className={'nav-row-container is-gap-2'}>
-                {/*<div>*/}
-                {/*    <Link to="/">Home</Link>*/}
-                {/*</div>*/}
+            <div className={authUser ? 'width-100 flex' : 'width-75 flex'} style={{justifyContent: 'space-between'}}>
+                <div className={'nav-row-container gap-half'}>
+                </div>
 
-                {authUser ? (
-                    <div style={{display: 'flex', gap: '2rem'}}>
-                        <button
-                            className={'button'}
-                            onClick={signOut}
-                        >Sign Out
-                        </button>
-                        <button
-                            onClick={() => navigate('/sign-out')}
-                        >My Account
-                        </button>
-                    </div>
-                ) : (
-                    <div style={{display: 'flex', gap: '2rem'}}>
-                        <button
-                            className={'button'}
-                            onClick={() => setView('sign-in')}
-                        >Sign In
-                        </button>
-                        <button
-                            className={'button-accent'}
-                            onClick={() => setView('sign-up')}
-                        >Get Started
-                        </button>
-                    </div>
-                )}
+                <div className={'nav-row-container gap-half'}>
+                    {/*<div>*/}
+                    {/*    <Link to="/">Home</Link>*/}
+                    {/*</div>*/}
 
 
+
+                </div>
             </div>
+
+
 
         </div>
     )

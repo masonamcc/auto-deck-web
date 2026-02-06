@@ -8,6 +8,7 @@ import brand from '../brand.config.json'
 import {signInUser, signUpUser} from "../scripts/userScripts.js";
 import {useView} from "../contexts/ViewContext.js";
 import {useAuthUser} from "../contexts/AuthUserContext.js";
+import '../styles/color-palette.css'
 
 export default function WelcomeScreen() {
 
@@ -76,6 +77,7 @@ export default function WelcomeScreen() {
             setAuthUser(user)
             console.log('Saving authUser to localStorage: ', user)
             localStorage.setItem('user', JSON.stringify(user))
+            navigate('/dashboard')
         }
     }
 
@@ -86,17 +88,17 @@ export default function WelcomeScreen() {
     }, []);
 
     return (
-        <div className={'center-container'}>
+        <div className={'center-container arctic'}>
 
-            <div className="section" style={{width: '50%'}}>
+            <div className={"section height-full"} style={{width: '100%', alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
 
                 {view === 'welcome' && (
 
-                    <div className={'grid-2-col'}>
+                    <div className={'grid-2-col height-full'}>
 
-                        <div className={'span-2-col general-field text-center'}>
+                        <div className={'general-field text-center mb-1-children'}>
 
-                            <h1 style={{fontFamily: "monospace", fontSize: '80px'}} className={'text-center'}>Power your workforce with <span style={{color: '#ff8700', fontStyle: 'italic'}}>Automation</span></h1>
+                            <h1 style={{fontSize: '60px'}} className={'text-center'}>Power your workforce with <span style={{color: '#ff8700', fontStyle: 'italic'}}>Automation</span></h1>
 
                             <div className={'center'}>
                                 <p style={{fontSize: '25px', fontWeight: '300'}} className={'width-50'} >Build custom automation tools for the systems you use and distribute them across teams.</p>
@@ -104,20 +106,18 @@ export default function WelcomeScreen() {
 
                             <div className={'gap-1'}>
 
-                                <button style={{fontSize: '25px'}} onClick={() => switchView('sign-up')} className={'button button-accent mb-1'}>Get Started</button>
+                                <button onClick={() => switchView('sign-up')} className={'button  button-accent mb-1'}>Get Started</button>
 
-                                <div>
-                                    <p>Already have an account?</p>
-                                    <button onClick={() => switchView('sign-in')}>Sign In</button>
+                                <div className={'flex center gap-1'}>
+                                    <p>Completely free</p>
+                                    <p>No Credit Card Required</p>
                                 </div>
 
-                                {/*<button onClick={() => switchView('sign-in')} className={'button-accent'}>Sign In</button>*/}
-                                {/*<button onClick={() => switchView('sign-up')} className={'button-accent'}>Sign Up</button>*/}
                             </div>
 
                         </div>
 
-                        <div>
+                        <div className={'ocean height-full'}>
 
                             <div className={'hero-field'}>
 
@@ -242,7 +242,7 @@ export default function WelcomeScreen() {
                 )}
 
                 {view === 'sign-in' && (
-                    <div className={'grid-2-col'}>
+                    <div className={'grid-2-col width-75'}>
 
                         <div className={'general-field'}>
                             <h1 style={{fontSize: '40px', lineHeight: '1', fontWeight: '400'}}>Sign In</h1>

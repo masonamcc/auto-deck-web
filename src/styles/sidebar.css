@@ -1,12 +1,13 @@
 .sidebar {
-    background-color: transparent;
-    width: 15%;
+    width: 12%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-right: 1px solid;
-    border-color: rgba(0,0,0,.4);
+    padding: 2rem;
+
+    /*border-right: 1px solid;*/
+    /*border-color: rgba(0,0,0,.4);*/
     /*flex: 1*/
 }
 
@@ -16,24 +17,34 @@
 }
 
 .menu-container {
-    display: flex;
-    flex-direction: column;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*padding: 1rem*/
 }
 
 .menu-container > * {
-    padding-inline: 2rem;
-    padding-block: .5rem;
+    margin-bottom: 1rem;
     /*background-color: #e5e5e5;*/
+    color: white;
     /*border: 1px solid;*/
-    transition: background-color .3s ease-in-out;
+
 }
 
-.menu-container > a {
+.menu-container h5 {
     /*color: black;*/
     font-weight: 400;
 }
 
-.menu-container > *:hover {
-    background-color: #e5e5e5;
+
+
+.menu-list-item-container {
+    transition: color .25s ease-in-out;
 }
 
+.menu-list-item-container > *:hover {
+    color: #ffb731;
+}
+
+.menu-list-item-container > * {
+    cursor: pointer;
+}

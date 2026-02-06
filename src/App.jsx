@@ -20,6 +20,7 @@ import ManageUsersScreen from "./screens/ManageUsersScreen.jsx";
 import WelcomeScreen from "./screens/WelcomeScreen.jsx";
 import {ViewContext} from "./contexts/ViewContext.js";
 import {AuthUserContext} from "./contexts/AuthUserContext.js";
+import Workspace from "./screens/Workspace.jsx";
 
 
 function App() {
@@ -51,9 +52,12 @@ function App() {
 
         console.log('Checking for cached user...');
         // Fetch the cached user
-        console.log('Auth User: ', localStorage.getItem('user'))
-        localStorage.getItem('user') && setAuthUser(JSON.parse(localStorage.getItem('user')));
-        setAuthUser(JSON.parse(localStorage.getItem('user')));
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            setAuthUser(JSON.parse(localStorage.getItem('user')));
+            navigate('/dashboard')
+        }
+
     }, []);
 
 
@@ -72,7 +76,11 @@ function App() {
                                 <div className={'mainFrame'}>
                                     <Routes>
                                         <Route path={'/dashboard'} element={<Dashboard/>}/>
-                                        <Route path={'/app/manage/organizations'} element={<ManageOrgsScreen/>}/>
+                                        {authUser.userGroup === 'admin' &&
+                                            <Route path={'/organizations'} element={<ManageOrgsScreen/>}/>
+                                        }
+                                        <Route path={'/workspace'} element={<Workspace/>}/>
+
                                         <Route path={'/app/manage/organizations/edit'} element={<EditOrgScreen/>}/>
                                         <Route path={'/app/manage/users'} element={<ManageUsersScreen/>}/>
                                     </Routes>
@@ -80,6 +88,8 @@ function App() {
 
                             </div>
                         }
+
+
 
                         {!authUser &&
                             <div className={'page-content'}>

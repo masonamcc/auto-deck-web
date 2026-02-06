@@ -11,6 +11,10 @@ export default function Dashboard() {
     const [orgs, setOrgs] = useState([])
     const {authUser, setAuthUser} = useAuthUser()
 
+    const [userGroups, setUserGroups] = useState([])
+
+    const [view, setView] = useState('dashboard')
+
     const getDbUsers = async () => {
         console.log('Getting DB Users...')
         const allUsers = await fetchDbUsers();
@@ -40,35 +44,45 @@ export default function Dashboard() {
 
     return (
 
-        <div className={'section-container text-white'}>
+        <div className={'section-container text-white off-black'}>
 
             <div style={{width: '100%'}} className={'flex'}>
-                <div style={{flex: 1}} className="section p-2">
-                    <div className={'grid-2-col gap-1'}>
-                        <h5 className={'span-2-col'}>Dashboard</h5>
 
-                        <div className={'panel height-300 p-1 span-3-col center column'}>
-                            <h3 className={'faint-text'}>You haven't set up an organization yet.</h3>
-                            <p className={'mb-1 faint-text'}>Once you setup an organization, people can join, and use tools you assign to it.</p>
 
-                            <button className={'button-accent'}>+ Create Organization </button>
-                        </div>
+                {view === 'dashboard' &&
+                    <div style={{flex: 1, paddingRight: 0}} className="section p-2" >
+                        <div className={'grid-2-col gap-1'}>
 
-                        <div className={'height-300 p-1 panel'}>
-                            <div className={'mb-1'}>
-                                <h4>Usage</h4>
-                                <p>View how your teams use tools</p>
+                            <div className={'panel gunmetal height-300 p-1 span-3-col grid-3-col'}>
+                                <h5 className={'span-3-col'} style={{height: 'auto'}}>Dashboard</h5>
+                                <div className={'mb-half-children faint-text'}>
+                                    <h2>You haven't set up a Workspace yet.</h2>
+                                    <p>Workspaces allow you to manage branding, users, user groups, and tools.</p>
+                                    <p>You can setup a Workspace by clicking the <strong>Workspace</strong> menu item on the left.</p>
+                                </div>
+
                             </div>
 
-                            <div>
-                                <h4 className={'faint-text'}>No usage to show</h4>
+                            <div className={'height-300 p-1 panel gunmetal'}>
+                                <div className={'mb-1'}>
+                                    <h4>Usage</h4>
+
+                                </div>
+
+                                <div>
+                                    <h4 className={'faint-text'}>No usage to show</h4>
+                                </div>
                             </div>
                         </div>
+
                     </div>
 
-                </div>
-                <div className={'p-2'} style={{flex: .3, background: '#09121d', color: 'white'}}>
-                    <h5 style={{fontWeight: '100'}}>Activity</h5>
+                }
+
+                <div className={'p-2'} style={{flex: .25}}>
+                    <div className={'panel saffron p-2'}>
+                        <h5 style={{fontWeight: '200'}}>Activity</h5>
+                    </div>
                 </div>
             </div>
 
