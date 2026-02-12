@@ -94,9 +94,9 @@ export default function WelcomeScreen() {
 
                 {view === 'welcome' && (
 
-                    <div className={'grid-2-col height-full'}>
+                    <div className={'height-full center'}>
 
-                        <div className={'general-field text-center mb-1-children'}>
+                        <div className={'general-field text-center mb-1-children width-75'}>
 
                             <h1 style={{fontSize: '60px'}} className={'text-center'}>Power your workforce with <span style={{color: '#ff8700', fontStyle: 'italic'}}>Automation</span></h1>
 
@@ -117,17 +117,7 @@ export default function WelcomeScreen() {
 
                         </div>
 
-                        <div className={'ocean height-full'}>
 
-                            <div className={'hero-field'}>
-
-                                <div className={'icon-container'}>
-
-                                </div>
-
-                            </div>
-
-                        </div>
 
                     </div>
                 )}

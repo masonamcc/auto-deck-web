@@ -34,8 +34,10 @@ export default function Sidebar() {
     //     }
     // }, [awsUser]);
 
+
+
     return (
-        <div className={'sidebar text-white gunmetal'}>
+        <div className={'sidebar panel'}>
             {authUser.userGroup === 'admin' &&
                 <div>
                     <div className={'menu-container'}>
@@ -55,33 +57,50 @@ export default function Sidebar() {
                             <h5 className={'mb-half'}>Menu</h5>
                             <div className={'flex column menu-list-item-container'}>
                                 <Link to={'/dashboard'}>Dashboard</Link>
-                                <Link to={'/workspace'}>Workspace</Link>
-                                <Link to={'/resources'}>User Groups</Link>
+                                {/*<Link to={'/workspace'}>Workspace</Link>*/}
+                                {/*<Link to={'/resources'}>User Groups</Link>*/}
+
+
                             </div>
                         </div>
+                    </div>
 
-                        <h5>Marketplace</h5>
+                    <div className={'menu-container'}>
+                        <div>
+                            <h5 className={'mb-half'}>My Company</h5>
+                            <div className={'flex column menu-list-item-container'}>
+                                <Link to={'/my-company'}>My Company</Link>
+                                <Link to={'/clients'}>Clients</Link>
+                                <Link to={'/team'}>Team</Link>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={'menu-container'}>
+                        <div>
+                            <h5 className={'mb-half'}>Marketplace</h5>
+                            <div className={'flex column menu-list-item-container'}>
+                                <Link to={'/dashboard'}>Plugins</Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
             }
 
             <div className={'mb-1-children menu-list-item-container'}>
                 <div className={'flex align-center gap-half'}>
-                    <img src={settingsIcon} alt={'settings'} width={'20px'} height={'20px'}/>
+                    <img className={'icon'} src={settingsIcon} alt={'settings'} width={'20px'} height={'20px'}/>
                     <p>Settings</p>
                 </div>
                 <div className={'flex align-center gap-half'}>
-                    <img src={helpIcon} alt={'helpIcon'} width={'20px'} height={'20px'} />
+                    <img className={'icon'} src={helpIcon} alt={'helpIcon'} width={'20px'} height={'20px'} />
                     <p>Help Center</p>
                 </div>
                 <div className={'flex align-center gap-half'}>
-                    <img src={logoutIcon} alt={'logoutIcon'} width={'20px'} height={'20px'} />
+                    <img className={'icon'} src={logoutIcon} alt={'logoutIcon'} width={'20px'} height={'20px'} />
                     <p onClick={() => signOut()}>Logout</p>
                 </div>
             </div>
-
-
-
         </div>
     )
 }

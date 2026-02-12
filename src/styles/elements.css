@@ -4,11 +4,11 @@
     border-collapse: separate;
     border-spacing: 0;
     overflow: hidden;
-    border-radius: 1rem; /* apply to table instead of thead */
+    border-radius: .5rem; /* apply to table instead of thead */
 }
 
 .table > thead {
-    background: #0098db;
+    background: var(--dark);
     color: white;
     border-radius: 1rem 1rem 0 0;
 }

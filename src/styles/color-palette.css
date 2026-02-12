@@ -1,3 +1,27 @@
+:root {
+    /*--bg-dark: #09090b;*/
+    /*--bg-card: #0f0f12;*/
+    --bg-light: #f6f6f6;
+    --bg-card: #f4f4f4;
+    --bg-surface: #18181b;
+    --accent-primary: #1638ff;
+    --accent-primary-text: #fff;
+    --accent-secondary: #3f5aff;
+    --accent-glow: rgba(109, 109, 246, 0.12);
+    --text-primary: #2d2d2d;
+    --text-secondary: #71717a;
+    --text-dim: rgba(0,0,0,.2);
+    --success: #4ade80;
+    --warning: #facc15;
+    --dark: #222;
+    --border: #bdbdbd;
+}
+
+.accent {
+    background: var(--accent-primary);
+    color: var(--accent-primary-text);
+}
+
 .mirage {
     background: #16232A;
 }
@@ -11,7 +35,8 @@
 /*}*/
 
 .sand {
-    background: #e4eff0;
+    background: #c88846;
+    color: white;
 }
 
 /*-------------*/
@@ -49,7 +74,7 @@
 }
 
 .gunmetal {
-    background: #171f25;
+    background: var(--bg-card);
 }
 
 .grey {
@@ -71,4 +96,17 @@
 
 .grey {
     background: #e6e9ec;
+}
+
+.cobalt {
+    background: #1638ff;
+    color: white
+}
+
+.top-line-1 {
+    background: linear-gradient(to bottom, #4f6b80 3%, #171f25 3%);
+}
+
+.text-dim {
+    color: var(--text-dim);
 }

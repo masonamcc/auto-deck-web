@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "./color-palette.css";
 
 .inter-100 {
     font-family: "Inter", sans-serif;
@@ -63,12 +64,13 @@
     font-style: normal;
 }
 
+
+
 * {
     box-sizing: border-box;
 }
 
 .master-container {
-    /*background-color: #704242;*/
     height: 100vh;
     width: 100vw;
 }
@@ -83,7 +85,7 @@
     min-height: 75px;
     /*padding-inline: 2rem;*/
 
-    color: white;
+    /*color: white;*/
     /*border-color: rgba(0,0,0,.4);*/
 
 }
@@ -93,7 +95,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    /*background-color: darkgreen;*/
 }
 
 .sidebar-page {
@@ -107,7 +108,7 @@
 }
 
 .page-content {
-    background-color: white;
+    /*background-color: var(--bg-light);*/
     /*flex: 1;*/
     width: 100%;
     height: 100%;
@@ -130,6 +131,10 @@
     text-align: center;
 }
 
+.text-right {
+    text-align: right;
+}
+
 .text-white {
     color: white;
 }
@@ -147,6 +152,9 @@
 }
 
 /*Sizing Classes*/
+.width-25 {
+    width: 25%;
+}
 
 .width-50 {
     width: 50%;
@@ -158,6 +166,10 @@
 
 .fullwidth {
     width: 100%;
+}
+
+.fullheight {
+    height: 100%;
 }
 
 /*Margin Classes*/
@@ -178,6 +190,10 @@
     margin-bottom: 1rem;
 }
 
+.mb-2-children > *:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
 .mb-2 {
     margin-bottom: 2rem;
 }
@@ -194,7 +210,7 @@
 /*Align Classes*/
 
 .center {
-    display: flex;
+    /*display: flex;*/
     justify-content: center;
     align-items: center;
 }
@@ -210,7 +226,7 @@
 .section-container {
     width: 100%;
     /*height: 100%;*/
-    background-color: transparent;
+    /*background-color: var(--bg-dark);*/
     display: flex
     /*gap: 1rem*/
     /*overflow-y: scroll;*/
@@ -309,6 +325,10 @@
     align-items: center;
 }
 
+.align-top {
+    align-items: flex-start;
+}
+
 
 .app-background {
     /*background: #e8bcbc;*/
@@ -318,7 +338,7 @@
 
 
 .gradient {
-    background: linear-gradient(45deg, #0c0c0c, #373737);
+    /*background: linear-gradient(45deg, #0c0c0c, #373737);*/
     /*color: black*/
 }
 
@@ -404,8 +424,14 @@
 }
 
 .button-accent {
-    background-color: #1338ea;
-    color: white;
+    background-color: var(--accent-primary);
+    color: var(--accent-primary-text);
+    transition: all .2s ease-in-out;
+}
+
+.button-accent:hover {
+    background-color: var(--accent-secondary);
+    color: var(--accent-primary-text);
 }
 
 .button-dull {
@@ -413,7 +439,8 @@
     color: white
 }
 
-.input-dark {
+.input-dark,
+.input-dark::placeholder {
     background: transparent;
     /*border: 0px;*/
     /*border-bottom: 1px solid;*/
@@ -425,12 +452,35 @@
 
 }
 
+input {
+    border: 0px;
+    font-size: 1.25rem;
+    /*margin-left: ;*/
+}
+
+.prepended-input {
+    border-radius: .25rem;
+    border: 1px solid;
+    border-color: rgba(0,0,0,.2);
+    padding: .5rem;
+    width: 100%;
+    font-size: 1.25rem;
+    display: flex;
+    background: white;
+}
+
+.prepended-input > p {
+    margin-right: .5rem;
+
+}
+
 .input {
     border-radius: .25rem;
     border: 1px solid;
     border-color: rgba(0,0,0,.2);
     padding: .5rem;
     width: 100%;
+    font-size: 1.25rem;
 }
 
 .input-dark::placeholder {
@@ -438,11 +488,28 @@
     opacity: .4;
 }
 
+
 .input-dark:focus {
     outline: none
 }
 
+.input-medium {
+    border-radius: .5rem;
+    border: 1px solid;
+    border-color: rgba(0,0,0,.2);
+    padding: .5rem;
+    width: 100%;
+    font-size: 2rem;
+}
 
+
+.is-size-3 {
+    font-size: 3rem;
+}
+
+.is-size-7 {
+    font-size: .9rem;
+}
 
 .input-field {
     display: flex;
@@ -581,17 +648,41 @@
     opacity: .2;
 }
 
+.faint-text-25 {
+    opacity: .25;
+}
+
+.faint-text-5 {
+    opacity: .5;
+}
+
 .panel {
-    box-shadow: 0 0 1rem rgba(0,0,0,.1);
-    border-radius: .5rem;
-    background: rgba(0,0,0,.25);
+    /*box-shadow: 0 0 1rem rgba(0,0,0,.1);*/
+    /*border: 1px solid var(--border);*/
+    background: var(--bg-card);
     /*border: 2px solid rgba(255,255,255,.1);*/
-    color: white;
+    color: var(--text-primary);
+    border-radius: 16px;
+    padding: 1rem;
 }
 
 .clear {
     background: transparent;
     color: white;
-    border: 0;
-    border-bottom: 1px solid white;
+    border: 1px solid rgba(255,255,255,.2);
+    /*border-bottom: ;*/
+    border-radius: .5rem;
+}
+
+.clear::placeholder {
+    color: white;
+    opacity: .2;
+}
+
+.toolbar {
+    height: auto;
+}
+
+.page-body {
+    flex: 1;
 }

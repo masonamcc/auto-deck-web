@@ -21,6 +21,8 @@ import WelcomeScreen from "./screens/WelcomeScreen.jsx";
 import {ViewContext} from "./contexts/ViewContext.js";
 import {AuthUserContext} from "./contexts/AuthUserContext.js";
 import Workspace from "./screens/Workspace.jsx";
+import ClientsScreen from "./screens/ClientsScreen.jsx";
+import MyCompany from "./screens/MyCompany.jsx";
 
 
 function App() {
@@ -72,24 +74,25 @@ function App() {
 
                         {authUser &&
                             <div className={'page-content'}>
-                                <Sidebar/>
-                                <div className={'mainFrame'}>
+                                <div style={{flex: .1, padding: '1rem', paddingRight: 0}}>
+                                    <Sidebar/>
+                                </div>
+                                <div className={'mainFrame p-1'}>
                                     <Routes>
                                         <Route path={'/dashboard'} element={<Dashboard/>}/>
                                         {authUser.userGroup === 'admin' &&
                                             <Route path={'/organizations'} element={<ManageOrgsScreen/>}/>
                                         }
-                                        <Route path={'/workspace'} element={<Workspace/>}/>
+                                        <Route path={'/my-company'} element={<MyCompany/>}/>
 
+                                        <Route path={'/workspace'} element={<Workspace/>}/>
+                                        <Route path={'/clients'} element={<ClientsScreen/>}/>
                                         <Route path={'/app/manage/organizations/edit'} element={<EditOrgScreen/>}/>
                                         <Route path={'/app/manage/users'} element={<ManageUsersScreen/>}/>
                                     </Routes>
                                 </div>
-
                             </div>
                         }
-
-
 
                         {!authUser &&
                             <div className={'page-content'}>

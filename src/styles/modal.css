@@ -1,0 +1,59 @@
+/* Backdrop is always in the DOM; hidden by default */
+.backdrop {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* start invisible */
+    opacity: 0;
+    background: rgba(0, 0, 0, 0);
+    pointer-events: none;
+
+    transition: opacity 200ms ease, background 200ms ease;
+    z-index: 9999;
+}
+
+.backdrop.is-open {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+}
+
+/* Modal animation */
+.modal {
+    width: min(520px, 92vw);
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+
+    /* start slightly down and transparent */
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.modal.is-open {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.modal-card {
+    background: white;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1rem;
+    transition: all .2s ease-in-out;
+}
+
+.modal-card:hover {
+    border-color: var(--accent-primary);
+}
+
+.modal-card-selected {
+    background: var(--accent-primary);
+    color: var(--accent-primary-text);
+}
