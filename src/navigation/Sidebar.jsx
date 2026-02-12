@@ -24,6 +24,7 @@ export default function Sidebar() {
         setAuthUser(null)
         navigate("/")
         setView('welcome')
+        localStorage.setItem('user', null)
     }
 
     console.log('Auth User: ', authUser)

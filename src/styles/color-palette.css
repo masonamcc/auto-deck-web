@@ -1,6 +1,7 @@
 :root {
     /*--bg-dark: #09090b;*/
     /*--bg-card: #0f0f12;*/
+    --bg-very-light: #ffffff;
     --bg-light: #f6f6f6;
     --bg-card: #f4f4f4;
     --bg-surface: #18181b;
@@ -20,6 +21,12 @@
 .accent {
     background: var(--accent-primary);
     color: var(--accent-primary-text);
+}
+
+.dark {
+    background: var(--dark);
+    color: var(--accent-primary-text);
+
 }
 
 .mirage {
@@ -109,4 +116,8 @@
 
 .text-dim {
     color: var(--text-dim);
+}
+
+.text-opacity-50 {
+    opacity: .5;
 }

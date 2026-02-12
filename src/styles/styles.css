@@ -139,6 +139,10 @@
     color: white;
 }
 
+.height-50 {
+    height: 50%;
+}
+
 .height-100vh {
     height: 100vh;
 }
@@ -180,6 +184,10 @@
 
 .mb-half-children > *:not(:last-child) {
     margin-bottom: .5rem;
+}
+
+.mb-0 {
+    margin-bottom: 0;
 }
 
 .mb-1 {
@@ -280,6 +288,10 @@
 .span-3-col {
     grid-column: span 3;
 }
+
+.span-4-col {
+    grid-column: span 4;
+}
 /* ---------- */
 
 /*Gap Classes*/
@@ -291,6 +303,10 @@
 /*Padding Classes*/
 .p-1 {
     padding: 1rem
+}
+
+.pb-1 {
+    padding-bottom: 1rem
 }
 
 .p-2 {
@@ -664,6 +680,20 @@ input {
     color: var(--text-primary);
     border-radius: 16px;
     padding: 1rem;
+}
+
+.tag {
+    background: var(--bg-very-light);
+    padding: .25rem;
+    padding-inline: 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.tag:hover {
+    background: rgba(0,0,0,.3);
+    color: white
 }
 
 .clear {

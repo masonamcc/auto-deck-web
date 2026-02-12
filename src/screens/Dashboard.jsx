@@ -71,7 +71,7 @@ export default function Dashboard() {
 
         <div className={'section-container text-white'}>
 
-            <div style={{width: '100%'}} className={'flex column'}>
+            <div style={{width: '100%'}} className={'flex column gap-1'}>
 
                 <div className={'fullwidth panel toolbar'}>
                     <button  onClick={() => setOpen(true)} className={'button-accent'}>+ Add New Widget</button>

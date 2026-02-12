@@ -66,7 +66,7 @@ export default function Navbar() {
                         </div>
                         <div className={'pl-2'}>
                             <p className={'inter-200'}>{greetingMessage}</p>
-                            <p className={'inter-600'}>{authUser.firstName} {authUser.lastName}</p>
+                            <p className={'inter-600'}>{authUser.firstName}</p>
                         </div>
                     </div>
                     <div style={{width: '50%', textAlign: 'right'}}>
